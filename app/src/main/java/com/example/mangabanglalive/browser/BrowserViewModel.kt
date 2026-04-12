@@ -9,6 +9,11 @@ class BrowserViewModel : ViewModel() {
     val url: StateFlow<String> = _url
 
     fun updateUrl(value: String) {
-        _url.value = value
+        val trimmed = value.trim()
+        _url.value = when {
+            trimmed.isBlank() -> ""
+            "://" in trimmed -> trimmed
+            else -> "https://$trimmed"
+        }
     }
 }
