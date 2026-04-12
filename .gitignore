@@ -1,6 +1,7 @@
 *.iml
 .gradle/
 .idea/
+.letta/
 .DS_Store
 build/
 captures/
