@@ -10,7 +10,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -30,8 +33,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.mangabanglalive.R
 import com.example.mangabanglalive.domain.model.TranslationSegment
 import com.example.mangabanglalive.overlay.TranslationOverlay
 import com.example.mangabanglalive.reader.components.PdfViewer
@@ -57,7 +62,18 @@ fun ReaderScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(uiState.project?.title ?: "Reader") },
+                title = {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_launcher_foreground),
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.height(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(uiState.project?.title ?: "Reader")
+                    }
+                },
                 navigationIcon = {
                     androidx.compose.material3.TextButton(onClick = onBack) { Text("Back") }
                 },
