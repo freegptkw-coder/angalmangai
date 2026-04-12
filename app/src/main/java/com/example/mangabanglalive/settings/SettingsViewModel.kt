@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 data class SettingsUiState(
     val apiKey: String = "",
     val model: String = "",
-    val provider: String = "",
+    val provider: String = "groq",
     val baseUrl: String = "https://openrouter.ai/api/v1",
     val style: TranslationStyle = TranslationStyle.NATURAL_BANGLA,
     val testStatus: String? = null
