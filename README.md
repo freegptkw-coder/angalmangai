@@ -49,6 +49,18 @@ Tap **Test Connection** to verify.
 ./gradlew :app:assembleDebug
 ```
 
+### AndroidIDE (mobile) setup
+If you are building inside AndroidIDE, set the SDK path in `local.properties`:
+
+```bash
+echo "sdk.dir=/data/user/0/com.tom.rv2ide/files/home/android-sdk" > local.properties
+```
+
+Then run:
+```bash
+./gradlew :app:assembleDebug
+```
+
 ## Notes
 - PDF viewing uses the platform `PdfRenderer` (first-page preview in MVP).
 - OCR currently uses ML Kit Text Recognition (Latin). Multi-language support is planned.
