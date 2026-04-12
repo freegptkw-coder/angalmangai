@@ -16,3 +16,4 @@ local.properties
 **/.kotlin/
 **/generated/
 **/.idea/
+.env

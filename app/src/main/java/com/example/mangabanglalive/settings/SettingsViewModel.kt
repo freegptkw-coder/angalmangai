@@ -76,9 +76,13 @@ class SettingsViewModel(
                 val api = openRouterClient.create(state.baseUrl, state.apiKey)
                 api.listModels()
             }
-            _uiState.update {
-                it.copy(testStatus = if (result.isSuccess) "Connection OK" else "Connection failed")
+            val status = if (result.isSuccess) {
+                "Connection OK"
+            } else {
+                val message = result.exceptionOrNull()?.message ?: "Unknown error"
+                "Connection failed: $message"
             }
+            _uiState.update { it.copy(testStatus = status) }
         }
     }
 }

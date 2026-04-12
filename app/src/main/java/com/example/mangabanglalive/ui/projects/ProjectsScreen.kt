@@ -32,9 +32,7 @@ fun ProjectsScreen(
             TopAppBar(
                 title = { Text("Projects") },
                 navigationIcon = {
-                    androidx.compose.material3.IconButton(onClick = onBack) {
-                        androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Default.ArrowBack, null)
-                    }
+                    androidx.compose.material3.TextButton(onClick = onBack) { Text("Back") }
                 }
             )
         }

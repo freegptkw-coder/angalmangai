@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit
 
 class OpenRouterClient {
     fun create(baseUrl: String, apiKey: String): OpenRouterApi {
+        val normalizedBaseUrl = if (baseUrl.endsWith("/")) baseUrl else "$baseUrl/"
         val logging = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BASIC
         }
@@ -30,7 +31,7 @@ class OpenRouterClient {
             .build()
 
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(normalizedBaseUrl)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(client)
             .build()

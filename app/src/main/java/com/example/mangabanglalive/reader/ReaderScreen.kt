@@ -59,14 +59,14 @@ fun ReaderScreen(
             TopAppBar(
                 title = { Text(uiState.project?.title ?: "Reader") },
                 navigationIcon = {
-                    IconButton(onClick = onBack) { Icon(androidx.compose.material.icons.Icons.Default.ArrowBack, null) }
+                    androidx.compose.material3.TextButton(onClick = onBack) { Text("Back") }
                 },
                 actions = {
-                    IconButton(onClick = { viewModel.toggleOverlay() }) {
-                        Icon(androidx.compose.material.icons.Icons.Default.Layers, null)
+                    androidx.compose.material3.TextButton(onClick = { viewModel.toggleOverlay() }) {
+                        Text("Overlay")
                     }
-                    IconButton(onClick = { viewModel.runOcrAndTranslate(context) }) {
-                        Icon(androidx.compose.material.icons.Icons.Default.Translate, null)
+                    androidx.compose.material3.TextButton(onClick = { viewModel.runOcrAndTranslate(context) }) {
+                        Text("Translate")
                     }
                 }
             )
