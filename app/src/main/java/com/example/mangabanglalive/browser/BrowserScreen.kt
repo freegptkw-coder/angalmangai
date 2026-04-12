@@ -1,5 +1,8 @@
 package com.example.mangabanglalive.browser
 
+import android.graphics.Color
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.foundation.layout.Column
@@ -52,13 +55,25 @@ fun BrowserScreen(viewModel: BrowserViewModel, onBack: () -> Unit) {
                 modifier = Modifier.fillMaxSize(),
                 factory = { context ->
                     WebView(context).apply {
+                        setBackgroundColor(Color.WHITE)
                         webViewClient = WebViewClient()
+                        webChromeClient = WebChromeClient()
                         settings.javaScriptEnabled = true
-                        loadUrl(url)
+                        settings.domStorageEnabled = true
+                        settings.databaseEnabled = true
+                        settings.loadsImagesAutomatically = true
+                        settings.useWideViewPort = true
+                        settings.loadWithOverviewMode = true
+                        settings.mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
+                        settings.userAgentString = settings.userAgentString + " MangaBanglaLive"
+
+                        if (url.startsWith("http") && url.length > 8) {
+                            loadUrl(url)
+                        }
                     }
                 },
                 update = { webView ->
-                    if (url.isNotBlank()) {
+                    if (url.startsWith("http") && url.length > 8) {
                         webView.loadUrl(url)
                     }
                 }
