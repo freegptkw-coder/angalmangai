@@ -12,7 +12,7 @@
 
 ## Partial
 - OCR + translation pipeline works for single page translation but needs batching, caching strategy refinement, and language detection improvements.
-- PDF viewing is basic and not yet split into per-page navigation.
+- PDF viewing uses Android PdfRenderer (first-page preview only).
 - Browser mode is a simple WebView without overlay translation.
 
 ## Remaining

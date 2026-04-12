@@ -77,7 +77,6 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("com.google.mlkit:text-recognition:16.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
-    implementation("com.github.barteksc:android-pdf-viewer:3.2.0-beta.1")
     implementation("androidx.webkit:webkit:1.11.0")
 
     debugImplementation("androidx.compose.ui:ui-tooling")

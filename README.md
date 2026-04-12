@@ -50,7 +50,7 @@ Tap **Test Connection** to verify.
 ```
 
 ## Notes
-- PDF viewing uses `android-pdf-viewer` via JitPack. If JitPack is blocked, remove the dependency and disable PDF viewer UI.
+- PDF viewing uses the platform `PdfRenderer` (first-page preview in MVP).
 - OCR currently uses ML Kit Text Recognition (Latin). Multi-language support is planned.
 
 ## Contributing
