@@ -2,7 +2,7 @@
 
 Manga Bangla Live is an Android-first manga reader and live translation app focused on Bangla translation overlays. This repository provides the initial production-ready scaffold with a clean architecture, Compose UI, import flows, and an OpenRouter integration skeleton.
 
-> **Security note**: Never commit API keys. The app stores the OpenRouter key locally using Android DataStore. Do not hardcode secrets in code or docs.
+> **Security note**: Never commit API keys. The app stores the OpenRouter key locally using Android DataStore. For GitHub Actions, use repository secrets instead of `.env` files or hardcoded tokens.
 
 ## MVP Status
 - ✅ Android project scaffold with Jetpack Compose.
@@ -41,13 +41,27 @@ Open **Settings** in the app and enter:
 - API Key
 - Model (example: `openrouter/auto`)
 - Provider (optional)
+- Base URL (`https://openrouter.ai/api/v1` by default)
 
 Tap **Test Connection** to verify.
 
 ## Build
-```
+```bash
 ./gradlew :app:assembleDebug
 ```
+
+## CI
+GitHub Actions now validates three stages:
+```bash
+./gradlew :app:compileDebugKotlin -x processDebugResources --stacktrace
+./gradlew :app:testDebugUnitTest --stacktrace
+./gradlew :app:assembleDebug --stacktrace
+```
+
+If a workflow needs credentials later, add them in `Settings > Secrets and variables > Actions`.
+Recommended secret names:
+- `OPENROUTER_API_KEY`
+- `REPO_ACCESS_TOKEN`
 
 ### AndroidIDE (mobile) setup
 If you are building inside AndroidIDE, set the SDK path in `local.properties`:
@@ -64,6 +78,7 @@ Then run:
 ## Notes
 - PDF viewing uses the platform `PdfRenderer` (first-page preview in MVP).
 - OCR currently uses ML Kit Text Recognition (Latin). Multi-language support is planned.
+- Live translate works best after Accessibility and Overlay permissions are granted.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md).
